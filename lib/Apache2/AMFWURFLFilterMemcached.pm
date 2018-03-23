@@ -30,7 +30,7 @@ package Apache2::AMFWURFLFilterMemcached;
 
   use vars qw($VERSION);
   my $CommonLib = new Apache2::AMFCommonLib ();
-  $VERSION= ©;
+  $VERSION= "4.31";
   my %Capability;
   my %Array_fb;
   my %Array_id;
