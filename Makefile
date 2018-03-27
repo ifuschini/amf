@@ -58,11 +58,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Apache Mobile Filter Suite
 NAME_SYM = Apache_Mobile_Filter_Suite
-VERSION = 4.30
+VERSION = 4.31
 VERSION_MACRO = VERSION
-VERSION_SYM = 4_30
+VERSION_SYM = 4_31
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 4.30
+XS_VERSION = 4.31
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -203,7 +203,6 @@ PERL_ARCHIVE_AFTER =
 
 TO_INST_PM = Suite/.exists \
 	lib/.DS_Store \
-	lib/Apache2/.DS_Store \
 	lib/Apache2/AMF51DegreesFilter.pm \
 	lib/Apache2/AMF51DegreesFilterMemcached.pm \
 	lib/Apache2/AMFCarrierDetection.pm \
@@ -226,8 +225,6 @@ PM_TO_BLIB = Suite/.exists \
 	$(INST_LIB)/Suite/.exists \
 	lib/.DS_Store \
 	blib/lib/.DS_Store \
-	lib/Apache2/.DS_Store \
-	blib/lib/Apache2/.DS_Store \
 	lib/Apache2/AMF51DegreesFilter.pm \
 	blib/lib/Apache2/AMF51DegreesFilter.pm \
 	lib/Apache2/AMF51DegreesFilterMemcached.pm \
@@ -331,7 +328,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Apache2-ApacheMobileFilter
-DISTVNAME = Apache2-ApacheMobileFilter-4.30
+DISTVNAME = Apache2-ApacheMobileFilter-4.31
 
 
 # --- MakeMaker macro section:
@@ -572,7 +569,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
+	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -620,7 +617,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  LWP::Protocol::https: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  LWP::Simple: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  POSIX: '\''0'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''4.30'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''4.31'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
@@ -681,7 +678,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
 	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "4.30"' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "4.31"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
@@ -966,9 +963,9 @@ test :: $(TEST_TYPE) subdirs-test
 subdirs-test ::
 	$(NOECHO) $(NOOP)
 
+	$(NOECHO) $(ECHO) 'No tests defined for $(NAME) extension.'
 
 test_dynamic :: pure_all
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
 
 testdb_dynamic :: pure_all
 	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
@@ -1019,7 +1016,6 @@ pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
 	  Suite/.exists $(INST_LIB)/Suite/.exists \
 	  lib/.DS_Store blib/lib/.DS_Store \
-	  lib/Apache2/.DS_Store blib/lib/Apache2/.DS_Store \
 	  lib/Apache2/AMF51DegreesFilter.pm blib/lib/Apache2/AMF51DegreesFilter.pm \
 	  lib/Apache2/AMF51DegreesFilterMemcached.pm blib/lib/Apache2/AMF51DegreesFilterMemcached.pm \
 	  lib/Apache2/AMFCarrierDetection.pm blib/lib/Apache2/AMFCarrierDetection.pm \

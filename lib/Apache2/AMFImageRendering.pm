@@ -89,6 +89,7 @@ package Apache2::AMFImageRendering;
   my $typeGraphicLibrary='gd';
   my $filterMagick='Lanczos';
   my $qualityImage=90;
+  my $maxAgeImage=99999999999999999;
 
   $ImageType{'image/png'}="png";
   $ImageType{'image/gif'}="gif";
@@ -142,6 +143,14 @@ sub loadConfigFile {
         $qualityImage=$ENV{QualityImage};
       } else {
 			    $CommonLib->printLog("ERROR: QualityImage must be a number from 0 (lower) to 100 (higher), default is: ".$qualityImage);
+      }
+		}
+		if ($ENV{MaxAgeImage}) {
+      if (($ENV{MaxAgeImage} =~ /^\d+?$/) && $ENV{MaxAgeImage} > 0 ) {
+        $maxAgeImage=$ENV{MaxAgeImage};
+        $CommonLib->printLog("MaxAgeImage is: ".$maxAgeImage." (seconds)");
+      } else {
+			    $CommonLib->printLog("ERROR: MaxAgeImage must be a number > 0");
       }
 		}
     $CommonLib->printLog("QualityImage is: ".$qualityImage);
@@ -272,8 +281,8 @@ sub handler    {
 						#
 						
 						if ( -e "$imageToConvert") {						  
-							my $filesize; 
-							if ( -e "$imagefile") {
+							my $filesize;
+							if ( -e "$imagefile" && time - (stat ($imagefile))[9] < $maxAgeImage) {
 							} else {
 								my $image = Image::Resize->new("$imageToConvert");
 								if ($image->width() < $width && $resizeimagesmall eq 'false') {

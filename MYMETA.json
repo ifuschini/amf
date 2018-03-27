@@ -4,7 +4,7 @@
       "Idel Fuschini (idel@idelfuschini.it)"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.48, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001",
    "license" : [
       "unknown"
    ],
@@ -56,5 +56,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "3.40a"
+   "version" : "4.31"
 }
