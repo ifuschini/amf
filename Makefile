@@ -58,11 +58,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Apache Mobile Filter Suite
 NAME_SYM = Apache_Mobile_Filter_Suite
-VERSION = 4.32
+VERSION = 4.33
 VERSION_MACRO = VERSION
-VERSION_SYM = 4_32
+VERSION_SYM = 4_33
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 4.32
+XS_VERSION = 4.33
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -328,7 +328,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Apache2-ApacheMobileFilter
-DISTVNAME = Apache2-ApacheMobileFilter-4.32
+DISTVNAME = Apache2-ApacheMobileFilter-4.33
 
 
 # --- MakeMaker macro section:
@@ -617,7 +617,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  LWP::Protocol::https: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  LWP::Simple: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  POSIX: '\''0'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''4.32'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''4.33'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
@@ -678,7 +678,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
 	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "4.32"' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "4.33"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
