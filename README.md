@@ -5,17 +5,12 @@ Apache Mobile Filter site:
 
 http://www.apachemobilefilter.org
 
-Documentation site:
-
-http://wiki.apachemobilefilter.org
 
 Demo site:
 
 http://litedetection.apachemobilefilter.org
 
 http://fiftyone.apachemobilefilter.org
-
-http://w.apachemobilefilter.org
 
 Support:
 
